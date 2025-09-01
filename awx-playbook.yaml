@@ -1,7 +1,7 @@
 ---
 - name: Sample AWX Playbook for Ubuntu Servers
   hosts: all
-  become: yes
+  become: true
   tasks:
     - name: Update apt cache
       yum:
