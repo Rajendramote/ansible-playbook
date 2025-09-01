@@ -1,0 +1,19 @@
+---
+- name: Minimal AWX Connectivity & Privilege Test
+  hosts: all
+  become: true
+  tasks:
+    - name: Ping the target
+      ansible.builtin.ping:
+
+    - name: Show OS family
+      ansible.builtin.debug:
+        msg: "This server is running on {{ ansible_os_family }}"
+
+    - name: Create a test file as root
+      ansible.builtin.copy:
+        content: "Hello from AWX - Privilege Escalation works!"
+        dest: /root/awx_test.txt
+        owner: root
+        group: root
+        mode: '0644'
